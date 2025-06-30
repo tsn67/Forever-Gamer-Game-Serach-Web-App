@@ -10,13 +10,13 @@ const NavBar = () => {
 
 
     return (
-        <div className="flex flex-row px-4 py-1 dark:bg-slate-800 bg-white items-center gap-2 justify-between">
+        <div className="flex flex-row px-4 py-2 dark:bg-slate-900 bg-white items-center gap-2 justify-between">
             <div className="flex flex-row gap-2 items-center">
-                <div className="px-1 bg-gray-100 rounded-md shadow-gray shadow-sm">
-                    <RiGamepadFill size={40} />
+                <div className="px-1 bg-gray-200 rounded-md shadow-gray shadow-sm">
+                    <RiGamepadFill size={30} />
                 </div>
 
-                <h1 className="text-black dark:text-white">Nav Bar</h1>
+                <h1 className="text-black dark:text-white font-semibold">Forever Gamer</h1>
             </div>
 
             <div>
