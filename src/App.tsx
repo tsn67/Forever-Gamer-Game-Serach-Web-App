@@ -1,5 +1,6 @@
 import MainContent from "./components/MainContent"
 import NavBar from "./components/NavBar"
+import SideNavBar from "./components/SideNavBar"
 import "./styles/index.css"
 
 const App = () => {
@@ -11,7 +12,9 @@ const App = () => {
             </div>
 
             <div className="w-full h-full flex flex-row ">
-                <div className="lg:flex hidden bg-blue-100 w-[30%]"></div>
+                <div className="lg:flex hidden bg-blue-100 w-[30%]">
+                    <SideNavBar />
+                </div>
                 <div className="main-content h-full w-full">
                     <MainContent />
                 </div>

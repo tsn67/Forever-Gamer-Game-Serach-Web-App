@@ -1,28 +1,19 @@
 import useFetchData from "./useFetchData";
 
-export interface Game {
+interface Category {
     id: number
-    slug: string
     name: string
-    background_image: string
-    parent_platforms: { platform: platform }[] 
-    metacritic: number
 }
 
-interface platform {
-    id: number,
-    name: string,
-    slug: string
-}
-
-
-// export interface ApiResponse {
-//     count: number;
-//     results: Game[];
+//removed due to refactoring (general daat fetching)
+// interface ApiResponseCategories {
+//     count: number
+//     results: Category[]
 // }
 
-function useFetchGames() {
-    // const [games, setGames] = useState<Game[]>([]);
+const useFetchCategoreies = () => {
+
+    // const [categories, setCategories] = useState<Category[]>([]);
     // const [error, setError] = useState("");
     // const [loading, setLoading] = useState(false)
 
@@ -31,9 +22,9 @@ function useFetchGames() {
 
     // useEffect(() => {
     //     setLoading(true)
-    //     apiClient.get<ApiResponse>("/games")
+    //     apiClient.get<ApiResponseCategories>("/genres")
     //         .then((res) => {
-    //             setGames(res.data.results);
+    //             setCategories(res.data.results);
     //             setLoading(false)
     //         })
     //         .catch((err: AxiosError) => {
@@ -43,9 +34,8 @@ function useFetchGames() {
     // }, []);
 
 
-    return useFetchData<Game>('/games');
+    return useFetchData<Category>('/genres')
+
 }
 
-
-
-export default useFetchGames;
+export default useFetchCategoreies;
