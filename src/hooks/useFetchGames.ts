@@ -1,4 +1,5 @@
-import useFetchData from "./useFetchData";
+import type { Category } from "./useFetchCategories";
+import useFetchData, { type Param } from "./useFetchData";
 
 export interface Game {
     id: number
@@ -21,7 +22,7 @@ interface platform {
 //     results: Game[];
 // }
 
-function useFetchGames() {
+function useFetchGames(selectedCategory?: Category) {
     // const [games, setGames] = useState<Game[]>([]);
     // const [error, setError] = useState("");
     // const [loading, setLoading] = useState(false)
@@ -42,8 +43,10 @@ function useFetchGames() {
     //         });
     // }, []);
 
+    let filterParam: Param | null = null; 
+    filterParam = selectedCategory ? {key: 'genres', value: `${selectedCategory.id}`}: null
 
-    return useFetchData<Game>('/games');
+    return useFetchData<Game>('/games', filterParam ? [filterParam]: undefined, [selectedCategory]);
 }
 
 

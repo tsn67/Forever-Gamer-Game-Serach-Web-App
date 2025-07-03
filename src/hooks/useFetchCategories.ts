@@ -1,8 +1,9 @@
 import useFetchData from "./useFetchData";
 
-interface Category {
+export interface Category {
     id: number
     name: string
+    image_background: string
 }
 
 //removed due to refactoring (general daat fetching)

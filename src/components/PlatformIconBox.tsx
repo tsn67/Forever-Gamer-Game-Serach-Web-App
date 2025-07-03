@@ -2,7 +2,7 @@ import { FaXbox } from "react-icons/fa";
 import { FaPlaystation } from "react-icons/fa";
 import { FaWindows } from "react-icons/fa";
 
-interface Platform {
+export interface Platform {
     id: number
     name: string
     slug: string
@@ -16,7 +16,7 @@ const PlatformIconBox = ({ platforms }: { platforms: Platform[] }) => {
         ['playstation', <FaPlaystation color="gray"/>]
     ])
 
-    console.log(platforms)
+    // console.log(platforms)
 
     return (
         <div className="flex flex-row gap-2 mt-1 mb-2 px-2">

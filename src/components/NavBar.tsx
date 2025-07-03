@@ -19,6 +19,7 @@ const NavBar = () => {
                 <h1 className="text-black dark:text-white font-semibold">Forever Gamer</h1>
             </div>
 
+
             <div>
                 <ThemeToggleButton toggleTheme={toggleTheme}/>
             </div>
