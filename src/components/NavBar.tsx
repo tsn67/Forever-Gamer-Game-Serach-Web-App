@@ -5,8 +5,14 @@ import { LuSun } from "react-icons/lu";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+//for search input
+interface Props {
+    setOnSearch: (text: string) => void
+}
+
+const NavBar = ({ setOnSearch }: Props) => {
 
 
     return (
@@ -19,15 +25,15 @@ const NavBar = () => {
                 <h1 className="text-black dark:text-white font-semibold">Forever Gamer</h1>
             </div>
 
-
-            <div>
-                <ThemeToggleButton toggleTheme={toggleTheme}/>
+            <div className="flex flex-row gap-2 items-center">
+                <SearchInput setOnSearch={setOnSearch}/>
+                <ThemeToggleButton toggleTheme={toggleTheme} />
             </div>
         </div>
     )
 }
 
-function ThemeToggleButton({toggleTheme}: {toggleTheme: () => void}) {
+function ThemeToggleButton({ toggleTheme }: { toggleTheme: () => void }) {
 
     const [state, setState] = useState(0);
     const variants = {
@@ -46,7 +52,7 @@ function ThemeToggleButton({toggleTheme}: {toggleTheme: () => void}) {
         <AnimatePresence mode="wait">
             {state == 0 ? <motion.div key={'light-logo'} variants={variants} initial="initial" animate="animate">
                 <MdOutlineDarkMode />
-            </motion.div> : <motion.div key={'dark-logo'}  variants={variants} initial="initial" animate="animate">
+            </motion.div> : <motion.div key={'dark-logo'} variants={variants} initial="initial" animate="animate">
                 <LuSun color="white" />
             </motion.div>}
         </AnimatePresence>

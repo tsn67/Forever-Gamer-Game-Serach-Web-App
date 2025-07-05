@@ -12,6 +12,7 @@ export interface GameQuery {
   platform: Platform | null
   category: Category | null
   searchTag: string | null
+  searchText: string | null
 }
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
   return (
     <div className="h-screen flex flex-col  dark:bg-slate-900 bg-white">
       <div className="top-section bg-orange-400">
-        <NavBar />
+        <NavBar setOnSearch={(text: string) => setGameQuery({...gameQuery, searchText: text})}/>
       </div>
 
       <div className="flex flex-1 flex-row h-0">
@@ -33,7 +34,6 @@ const App = () => {
           <SideNavBar selectCategory={(category) => setGameQuery({...gameQuery, category})} selectedCategory={gameQuery.category}/>
         </div>
 
-        
         <div className="max-h-screen flex flex-col w-full">
           <div className="flex flex-row">
             <PlatformDropDown setSelectedPlatform={(platform) => setGameQuery({...gameQuery, platform})}/>
