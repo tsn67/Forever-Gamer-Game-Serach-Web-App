@@ -11,6 +11,7 @@ import SearchSelector from "./components/SearchSelector";
 export interface GameQuery {
   platform: Platform | null
   category: Category | null
+  searchTag: string | null
 }
 
 const App = () => {
@@ -36,7 +37,7 @@ const App = () => {
         <div className="max-h-screen flex flex-col w-full">
           <div className="flex flex-row">
             <PlatformDropDown setSelectedPlatform={(platform) => setGameQuery({...gameQuery, platform})}/>
-            <SearchSelector />
+            <SearchSelector setSearchTag={(tag: string) => setGameQuery({...gameQuery, searchTag: tag})}/>
           </div>
           <div className="flex-1 w-full overflow-y-auto">
             <MainContent gameQuery={gameQuery}/>

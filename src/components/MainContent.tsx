@@ -9,7 +9,7 @@ interface Prop {
 
 const MainContent = ({gameQuery}: Prop) => {
 
-    const { data, error, loading } = useFetchGames(gameQuery?.category? gameQuery.category : undefined, gameQuery?.platform? gameQuery.platform: undefined)
+    const { data, error, loading } = useFetchGames(gameQuery?.category? gameQuery.category : undefined, gameQuery?.platform? gameQuery.platform: undefined, gameQuery?.searchTag? gameQuery.searchTag: undefined)
 
     return (
         <div className=" h-full grid xl:grid-cols-4 md:grid-cols-3 grid-cols-1  sm:grid-cols-2 gap-3 px-2 place-content-around">

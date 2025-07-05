@@ -23,7 +23,7 @@ interface platform {
 //     results: Game[];
 // }
 
-function useFetchGames(selectedCategory?: Category, selectedPlatform?: Platform) {
+function useFetchGames(selectedCategory?: Category, selectedPlatform?: Platform, searchTag?: string) {
     // const [games, setGames] = useState<Game[]>([]);
     // const [error, setError] = useState("");
     // const [loading, setLoading] = useState(false)
@@ -50,13 +50,19 @@ function useFetchGames(selectedCategory?: Category, selectedPlatform?: Platform)
     let platformFilterParam: Param | null = null;
     platformFilterParam = selectedPlatform ? {key: 'platforms', value: `${selectedPlatform.id}`}: null
 
-    const params: Param[] = [];
+
+    let searchParam: Param | null = null;
+    searchParam = searchTag ? {key: 'ordering', value: `${searchTag}`}: null
+
+    const params: Param[] = []
     if (filterParam)
         params.push(filterParam)
     if (platformFilterParam)
         params.push(platformFilterParam)
+    if (searchParam)
+        params.push(searchParam)
 
-    return useFetchData<Game>('/games', params, [selectedCategory, selectedPlatform]);
+    return useFetchData<Game>('/games', params, [selectedCategory, selectedPlatform, searchTag]);
 }
 
 export default useFetchGames;
