@@ -1,3 +1,4 @@
+import type { Platform } from "../components/PlatformIconBox";
 import type { Category } from "./useFetchCategories";
 import useFetchData, { type Param } from "./useFetchData";
 
@@ -22,7 +23,7 @@ interface platform {
 //     results: Game[];
 // }
 
-function useFetchGames(selectedCategory?: Category) {
+function useFetchGames(selectedCategory?: Category, selectedPlatform?: Platform) {
     // const [games, setGames] = useState<Game[]>([]);
     // const [error, setError] = useState("");
     // const [loading, setLoading] = useState(false)
@@ -46,9 +47,16 @@ function useFetchGames(selectedCategory?: Category) {
     let filterParam: Param | null = null; 
     filterParam = selectedCategory ? {key: 'genres', value: `${selectedCategory.id}`}: null
 
-    return useFetchData<Game>('/games', filterParam ? [filterParam]: undefined, [selectedCategory]);
+    let platformFilterParam: Param | null = null;
+    platformFilterParam = selectedPlatform ? {key: 'platforms', value: `${selectedPlatform.id}`}: null
+
+    const params: Param[] = [];
+    if (filterParam)
+        params.push(filterParam)
+    if (platformFilterParam)
+        params.push(platformFilterParam)
+
+    return useFetchData<Game>('/games', params, [selectedCategory, selectedPlatform]);
 }
-
-
 
 export default useFetchGames;
