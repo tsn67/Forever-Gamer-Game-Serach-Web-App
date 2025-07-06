@@ -67,7 +67,7 @@ function useFetchGames(selectedCategory?: Category, selectedPlatform?: Platform,
     if (searchTextParam)
         params.push(searchTextParam)
 
-    return useFetchData<Game>('/games', params, [selectedCategory, selectedPlatform, searchTag, searchText]);
+    return useFetchData<Game>('/gamess', params, [selectedCategory, selectedPlatform, searchTag, searchText]);
 }
 
 export default useFetchGames;
